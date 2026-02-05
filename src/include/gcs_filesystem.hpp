@@ -152,7 +152,11 @@ public:
 	shared_ptr<GCSContextState> context;
 
 private:
+<<<<<<< HEAD
 	unique_ptr<google::cloud::storage::ObjectWriteStream> write_stream = nullptr;
+=======
+	unique_ptr<google::cloud::storage::ObjectWriteStream> _write_stream = nullptr;
+>>>>>>> 780145e (Add file write support)
 };
 
 class GCSFileSystem : public FileSystem {

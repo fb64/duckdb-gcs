@@ -209,6 +209,7 @@ void GCSFileHandle::WriteInto(char *buffer, int64_t nr_bytes) {
 		throw IOException("Failed to write from GCS: " + status.message());
 	}
 	write_stream->write(buffer, nr_bytes);
+
 	file_offset += nr_bytes;
 }
 
@@ -772,10 +773,13 @@ void GCSFileSystem::LoadRemoteFileInfo(GCSFileHandle &handle) {
 void GCSFileSystem::Write(FileHandle &handle, void *buffer, int64_t nr_bytes, idx_t location) {
 	auto &gsfh = handle.Cast<GCSFileHandle>();
 	auto write_buffer = char_ptr_cast(buffer);
+<<<<<<< HEAD
 	if (location != gsfh.file_offset) {
 		throw IOException("GCS does not support random writes (requested offset: %llu, current offset: %llu)", location,
 		                  gsfh.file_offset);
 	}
+=======
+>>>>>>> 780145e (Add file write support)
 	gsfh.WriteInto(write_buffer, nr_bytes);
 }
 
